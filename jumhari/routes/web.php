@@ -85,6 +85,27 @@ Route::get("/profil/{nama?}", function($nama = "Jumhari"){
     return view("profil", ['namaMahasiswa' => $nama]); //optional 1
 });
 
+Route::get('users/{id}', function ($id) {
+    
+});
+
+Route::get("/fakultas", function(){
+    // Untuk mengirim argumen ke view
+    // tulisakan diparameter ke 2 method view ()
+    //argumen harus dibungkus di dalam variabel array
+//     return view("fakultas.index",
+//     [
+//         'ilkom' => 'Fakultas Ilmu Komputer';
+//         'feb' => 'Fakultas Ekonomi dan Bisnis';
+//     ]
+
+// });
+
+
+    $fakultas = array("Fakultas Ilmu Komputer", "Fakultas EKonomi dan Bisnis", "Fakultas Teknik");
+    return view("fakultas.index",['fakultas' => $fakultas, 'kampus' => "Universitas MDP"]);
+
+});
 
 
 
