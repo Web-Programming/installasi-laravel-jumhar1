@@ -14,6 +14,6 @@
     @yield('content')
 
     <hr>
-    &copy; {{data("Y")}} || Universitas MDP
+    &copy; {{date("Y")}} || Universitas MDP
 </body>
 </html>

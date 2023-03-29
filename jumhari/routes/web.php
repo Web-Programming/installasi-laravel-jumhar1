@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,19 +33,19 @@ Route::get('/halo3', function () {
     echo"<h1>Hallo $nama</h1>";
  });
 
- Route::get('/mahasiswa/{nama?}', function ($nama = 'Jumhari') {
-    echo "<h1>Halo $nama </h1>";
-});
+//  Route::get('/mahasiswa/{nama?}', function ($nama = 'Jumhari') {
+//     echo "<h1>Halo $nama </h1>";
+// });
 
- Route::get('/mahasiswa2/{nama?}/{jurusan?}', function ($nama = 'Jumhari', $jurusan = 'Informatika') {
-    echo "<h1>nama = $nama</h1>";
-    echo "<h1>jurusan = $jurusan</h1>";
-});
+//  Route::get('/mahasiswa2/{nama?}/{jurusan?}', function ($nama = 'Jumhari', $jurusan = 'Informatika') {
+//     echo "<h1>nama = $nama</h1>";
+//     echo "<h1>jurusan = $jurusan</h1>";
+// });
 
- Route::get('/mahasiswa3/{nama?}/{jurusan?}', function ($nama = 'Jumhari', $jurusan = 'Informatika') {
-    echo "<h1>nama = $nama</h1>";
-    echo "<h1>jurusan = $jurusan</h1>";
-})->where('nama','[A-Z]');
+//  Route::get('/mahasiswa3/{nama?}/{jurusan?}', function ($nama = 'Jumhari', $jurusan = 'Informatika') {
+//     echo "<h1>nama = $nama</h1>";
+//     echo "<h1>jurusan = $jurusan</h1>";
+// })->where('nama','[A-Z]');
 
 Route::get('/hubungi' , function (){
     echo "<h1>Hubungi Kami</h1>";
@@ -89,7 +88,7 @@ Route::get('users/{id}', function ($id) {
     
 });
 
-Route::get("/fakultas", function(){
+
     // Untuk mengirim argumen ke view
     // tulisakan diparameter ke 2 method view ()
     //argumen harus dibungkus di dalam variabel array
@@ -101,13 +100,12 @@ Route::get("/fakultas", function(){
 
 // });
 
+use App\Http\Controllers\ControllerFakultas;
+use App\Http\Controllers\ControllerMahasiswa;
 
-    $fakultas = array("Fakultas Ilmu Komputer", "Fakultas EKonomi dan Bisnis", "Fakultas Teknik");
-    return view("fakultas.index",['fakultas' => $fakultas, 'kampus' => "Universitas MDP"]);
+Route::get("/fakultas", [ControllerFakultas::class, 'index']);  
 
-});
-
-
-
+//Route::get("/mahasiswa", [ControllerMahasiswa::class,'index']);
+Route::resource("/mahasiswa", ControllerMahasiswa::class);
 
 
