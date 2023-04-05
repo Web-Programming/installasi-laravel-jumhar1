@@ -16,6 +16,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 //cara membuat Router
 Route::get('/halo', function () {
     return'Hallo Semua';
@@ -52,11 +54,11 @@ Route::get('/hubungi' , function (){
 })->name('call');
 
 Route::get('/halo' , function (){
-   return "<a href='".route('call')."'>'.route('call').'</a>"; 
+   return "<a href='".route('call')."'>'.route('call').'</a>";
 });
 
 Route::get('/halo2' , function (){
-   return "<a href='".route('call')."'>contoh 2</a>"; 
+   return "<a href='".route('call')."'>contoh 2</a>";
 });
 
 
@@ -67,7 +69,7 @@ Route::get('/halo2' , function (){
 // });
 
 // Route::get('/mhs/jurusan' function() {
-//     return "<h2>jurusan</h2>"; 
+//     return "<h2>jurusan</h2>";
 // });
 
 Route::prefix("/mhs")->group(function() {
@@ -85,7 +87,7 @@ Route::get("/profil/{nama?}", function($nama = "Jumhari"){
 });
 
 Route::get('users/{id}', function ($id) {
-    
+
 });
 
 
@@ -103,9 +105,10 @@ Route::get('users/{id}', function ($id) {
 use App\Http\Controllers\ControllerFakultas;
 use App\Http\Controllers\ControllerMahasiswa;
 
-Route::get("/fakultas", [ControllerFakultas::class, 'index']);  
+Route::get("/fakultas", [ControllerFakultas::class, 'index']);
 
 //Route::get("/mahasiswa", [ControllerMahasiswa::class,'index']);
 Route::resource("/mahasiswa", ControllerMahasiswa::class);
 
+Route::get('/mhsparent', [MahasiswaController::class, 'mhsparent']);
 

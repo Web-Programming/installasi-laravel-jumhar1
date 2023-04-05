@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ControllerMahasiswa extends Controller
 {
@@ -81,4 +82,13 @@ class ControllerMahasiswa extends Controller
     {
         //
     }
+
+    public function mhsparent(){
+        //1. menjalankan Query SQL
+        $result = DB::select("select mahasiswas. *, table_parent.email_ortu,
+         table_parent.nama_mhs as nama_ortu from mahasiswas innerjoin table_parent on mahasiswas.npm = table_parent.npm_mhs");
+        //2. mengirim SQL Result ke view
+        return view("mahasiswas.mhsparent", ["data" => $result]);
+    }
 }
+
