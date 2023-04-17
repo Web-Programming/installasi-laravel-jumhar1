@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControllerFakultas;
+use App\Http\Controllers\ControllerMahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,8 +104,7 @@ Route::get('users/{id}', function ($id) {
 
 // });
 
-use App\Http\Controllers\ControllerFakultas;
-use App\Http\Controllers\ControllerMahasiswa;
+
 
 Route::get("/fakultas", [ControllerFakultas::class, 'index']);
 
@@ -112,3 +113,4 @@ Route::resource("/mahasiswa", ControllerMahasiswa::class);
 
 Route::get('/mhsparent', [MahasiswaController::class, 'mhsparent']);
 
+Route::get('/listmhs', [ControllerMahasiswa::class, 'listmhs']);

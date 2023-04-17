@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -89,6 +90,11 @@ class ControllerMahasiswa extends Controller
          table_parent.nama_mhs as nama_ortu from mahasiswas innerjoin table_parent on mahasiswas.npm = table_parent.npm_mhs");
         //2. mengirim SQL Result ke view
         return view("mahasiswas.mhsparent", ["data" => $result]);
+    }
+
+    public function listmhs(){
+       $list = Mahasiswa::all();
+       return $list;
     }
 }
 
