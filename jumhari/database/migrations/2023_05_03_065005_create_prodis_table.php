@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParentsTable extends Migration
+class CreateProdisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateParentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('parents_table', function (Blueprint $table) {
+        Schema::create('prodis', function (Blueprint $table) {
             $table->id();
+            $table->string("nama");
             $table->timestamps();
         });
     }
@@ -25,8 +26,7 @@ class CreateParentsTable extends Migration
      * @return void
      */
     public function down()
-    
     {
-        Schema::dropIfExists('parents_table');
+        Schema::dropIfExists('prodis');
     }
 }

@@ -30,6 +30,10 @@ class CreateMahasiswasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("mahasiswas");
+        Schema::table('mahasiswas', function (Blueprint $table) {
+            $table->foreign("prodi_id")
+                    ->constrained()
+                    ->onDelete("cascade");
+        });
     }
 }
