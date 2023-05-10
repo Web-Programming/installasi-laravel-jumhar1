@@ -114,3 +114,5 @@ Route::resource("/mahasiswa", ControllerMahasiswa::class);
 Route::get('/mhsparent', [MahasiswaController::class, 'mhsparent']);
 
 Route::get('/listmhs', [ControllerMahasiswa::class, 'listmhs']);
+
+Route::get('/prodi/create', [ProdiControler::class, 'create']);
