@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Form Prodi</h2>
-    <form action = "{{http://127.0.0.1:8000/prodi/create}}" method= "POST">
+    <form action = "{{url('prodi/store')}}" method= "POST">
         @csrf
         <div class = "form-group">
             <label for ="nama">Nama</label>
