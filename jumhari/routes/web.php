@@ -1,7 +1,6 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ControllerFakultas;
-use App\Http\Controllers\ControllerMahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,101 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-
-//cara membuat Router
-Route::get('/halo', function () {
-    return'Hallo Semua';
-});
-
-Route::get('/halo2', function () {
-    return'<h1>Hallo Semua</h1>';
-});
-
-Route::get('/halo3', function () {
-    return"<h1>Hallo Semua, Selamat Siang</h1>";
-});
-
- Route::get('/halo/(nama?)', function ($nama) {
-    echo"<h1>Hallo $nama</h1>";
- });
-
-//  Route::get('/mahasiswa/{nama?}', function ($nama = 'Jumhari') {
-//     echo "<h1>Halo $nama </h1>";
-// });
-
-//  Route::get('/mahasiswa2/{nama?}/{jurusan?}', function ($nama = 'Jumhari', $jurusan = 'Informatika') {
-//     echo "<h1>nama = $nama</h1>";
-//     echo "<h1>jurusan = $jurusan</h1>";
-// });
-
-//  Route::get('/mahasiswa3/{nama?}/{jurusan?}', function ($nama = 'Jumhari', $jurusan = 'Informatika') {
-//     echo "<h1>nama = $nama</h1>";
-//     echo "<h1>jurusan = $jurusan</h1>";
-// })->where('nama','[A-Z]');
-
-Route::get('/hubungi' , function (){
-    echo "<h1>Hubungi Kami</h1>";
-})->name('call');
-
-Route::get('/halo' , function (){
-   return "<a href='".route('call')."'>'.route('call').'</a>";
-});
-
-Route::get('/halo2' , function (){
-   return "<a href='".route('call')."'>contoh 2</a>";
-});
-
-
-
-//Route Group
-// Route::get('/mhs/nama' function() {
-//     return "<h2>nama</h2>";
-// });
-
-// Route::get('/mhs/jurusan' function() {
-//     return "<h2>jurusan</h2>";
-// });
-
-Route::prefix("/mhs")->group(function() {
-    Route::get("/nama", function() {
-        return "<h2>nama</h2>";
-    });
-    Route::get('/jurusan', function() {
-        return "<h2>jurusan</h2>";
-    });
-});
-
-//new //get, post,oatch, delete
-Route::get("/profil/{nama?}", function($nama = "Jumhari"){
-    return view("profil", ['namaMahasiswa' => $nama]); //optional 1
-});
-
-Route::get('users/{id}', function ($id) {
-
-});
-
-
-    // Untuk mengirim argumen ke view
-    // tulisakan diparameter ke 2 method view ()
-    //argumen harus dibungkus di dalam variabel array
-//     return view("fakultas.index",
-//     [
-//         'ilkom' => 'Fakultas Ilmu Komputer';
-//         'feb' => 'Fakultas Ekonomi dan Bisnis';
-//     ]
-
-// });
-
-
-
-Route::get("/fakultas", [ControllerFakultas::class, 'index']);
-
-//Route::get("/mahasiswa", [ControllerMahasiswa::class,'index']);
-Route::resource("/mahasiswa", ControllerMahasiswa::class);
-
-Route::get('/mhsparent', [MahasiswaController::class, 'mhsparent']);
-
-Route::get('/listmhs', [ControllerMahasiswa::class, 'listmhs']);
-
-Route::get('/prodi/create', [ProdiControler::class, 'create']);
+require __DIR__.'/auth.php';
